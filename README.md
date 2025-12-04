@@ -84,3 +84,87 @@ The `admin_data` table stores administrator accounts for managing the CPE Labora
 
 ---
 
+## 7. Sample Data
+
+### Example 1
+admin_id: 1
+a_fname: Juan
+a_mname: Cruz
+a_sname: Dela Cruz
+a_role: Super Admin
+webmail: jdelacruz@pup.edu.ph
+account_status: Active
+fail_attempts: 0
+locked_account: 0
+
+shell
+Copy code
+
+### Example 2
+admin_id: 2
+a_fname: Maria
+a_mname: Santos
+a_sname: Garcia
+a_role: Lab Admin
+webmail: mgarcia@pup.edu.ph
+account_status: Active
+fail_attempts: 0
+locked_account: 0
+
+shell
+Copy code
+
+### Example 3
+admin_id: 3
+a_fname: Pedro
+a_mname: Lopez
+a_sname: Reyes
+a_role: Lab Admin
+webmail: preyes@pup.edu.ph
+account_status: Inactive
+fail_attempts: 0
+locked_account: 0
+
+yaml
+Copy code
+
+---
+
+## 8. Permission Matrix
+
+| Action                            | Super Admin | Lab Admin |
+|----------------------------------|-------------|-----------|
+| Create admin accounts            | ✓           | ✗         |
+| Modify admin accounts            | ✓           | ✗         |
+| Delete admin accounts            | ✓           | ✗         |
+| Verify student credentials       | ✓           | ✓         |
+| Approve/cancel reservations      | ✓           | ✓         |
+| Delete reservations              | ✓           | ✗         |
+| Verify equipment returns         | ✓           | ✓         |
+| Update equipment quantities      | ✓           | ✓         |
+| Delete equipment                 | ✓           | ✗         |
+| Manage equipment categories      | ✓           | ✗         |
+| Delete student accounts          | ✓           | ✗         |
+| Access system settings           | ✓           | ✗         |
+| Unlock accounts                  | ✓           | ✗         |
+| Delete system data               | ✓           | ✗         |
+
+---
+
+## 9. Data Validation Rules
+
+- Email must end with `@pup.edu.ph`  
+- Names must not contain special characters  
+- Role must be **Super Admin** or **Lab Admin**  
+- Fail attempts: valid range 0–3  
+- locked_account: must be 0 or 1  
+- Account status must be `Active` or `Inactive`  
+
+---
+
+## 10. Design Notes
+
+- Emphasis on security and accountability  
+- Lab Admin has no delete access  
+- Super Admin has full system rights  
+- Records preserved even if account becomes inactive  
